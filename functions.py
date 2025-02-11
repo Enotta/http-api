@@ -1,6 +1,7 @@
 from math import radians, sin, cos, sqrt, atan2
 import requests
 
+
 def haversine(lon1: float, lat1: float, lon2: float, lat2: float) -> float:
     lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
     dlon = lon2 - lon1
@@ -9,6 +10,7 @@ def haversine(lon1: float, lat1: float, lon2: float, lat2: float) -> float:
     c = 2 * atan2(sqrt(a), sqrt(1 - a))
     R = 6371
     return R * c
+
 
 def geocode_city(name: str) -> dict:
     headers = {"User-Agent": "CityAPI/1.0"}
@@ -25,3 +27,4 @@ def geocode_city(name: str) -> dict:
         return None
     except requests.exceptions.RequestException:
         return None
+        

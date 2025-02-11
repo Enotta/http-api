@@ -1,7 +1,9 @@
 from pydantic import BaseModel
 
+
 class CityCreate(BaseModel):
     name: str
+
 
 class City(BaseModel):
     id: int

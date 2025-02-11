@@ -1,2 +1,33 @@
-# http-api
+# Http-api
 Тестовое задание для CDN-video
+
+# Руководство пользователя:
+Данное руководство содержит сценарий использования, покрывающий все функции разработанного API.
+
+### 0. Убедиться, что установлены библиотеки:
+pip install fastapi uvicorn sqlalchemy requests
+
+### 1. Для запуска сервера: 
+Открываем папку c проектом в VS Code, запустим новый терминал, введём команду:
+
+uvicorn main:app --reload
+
+### 2. Для добавления города: 
+В командной строке Windows:
+
+curl -X POST "http://localhost:8000/cities/" -H "Content-Type: application/json" -d "{\"name\": \"ИмяНашегоГорода\"}"
+
+### 3. Для удаления города: 
+В командной строке Windows:
+
+curl -X DELETE "http://localhost:8000/cities/ИндексГородаИзБазеДанных"
+
+### 4. Вывести список городов: 
+В командной строке Windows:
+
+curl "http://localhost:8000/cities/"
+
+### 5. Вывести ближайшие города: 
+В командной строке Windows:
+
+curl "http://localhost:8000/cities/nearby?lat=Широта&lon=Долгота"
