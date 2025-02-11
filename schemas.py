@@ -13,3 +13,4 @@ class City(BaseModel):
 
     class Config:
         orm_mode = True
+        

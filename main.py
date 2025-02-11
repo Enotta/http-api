@@ -10,7 +10,6 @@ from functions import geocode_city, haversine
 from database import engine, get_db
 
 models.Base.metadata.create_all(bind=engine)
-
 app = FastAPI()
 
 
@@ -41,9 +40,9 @@ def read_cities(db: Session = Depends(get_db)):
     return cities
 
 
-@app.delete("/cities/{city_id}")
-def delete_city(city_id: int, db: Session = Depends(get_db)):
-    db_city = db.query(models.City).filter(models.City.id == city_id).first()
+@app.delete("/cities/{city_name}")
+def delete_city(city_name: str, db: Session = Depends(get_db)):
+    db_city = db.query(models.City).filter(models.City.name == city_name).first()
     if not db_city:
         raise HTTPException(status_code=404, detail="City not found")
     db.delete(db_city)
